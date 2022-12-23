@@ -1,9 +1,16 @@
+var mongoosee = require('mongoose');
+var Schemaa = mongoosee.Schema;
+
 module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
-      title: String,
-      description: String,
-      published: Boolean
+      nome: String,
+      numero_cfu: Number,
+      valutazione_corso: Number,
+      attivo: Number,
+      utente_id: [
+        {type: Schemaa.Types.ObjectId, ref: 'User'}
+      ]
     },
     { timestamps: true }
   );
@@ -14,6 +21,6 @@ module.exports = mongoose => {
     return object;
   });
 
-  const Course = mongoose.model("course", schema);
+  const Course = mongoose.model("Course", schema);
   return Course;
 };

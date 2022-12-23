@@ -4,16 +4,18 @@ const Course = db.Course;
 // Create and Save a new Course
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.nome) {
       res.status(400).send({ message: "Content can not be empty!" });
       return;
     }
   
     // Create a Course
     const course = new Course({
-      title: req.body.title,
-      description: req.body.description,
-      published: req.body.published ? req.body.published : false
+      nome: req.body.nome,
+      numero_cfu: req.body.numero_cfu,
+      valutazione_corso: req.body.valutazione_corso,
+      attivo: req.body.attivo ? req.body.attivo : true,
+      utente_id: req.body.utente_id
     });
   
     // Save Course in the database
@@ -32,8 +34,8 @@ exports.create = (req, res) => {
 
 // Retrieve all courses from the database.
 exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
+    const nome = req.query.nome;
+    var condition = nome ? { nome: { $regex: new RegExp(nome), $options: "i" } } : {};
   
     Course.find(condition)
       .then(data => {
