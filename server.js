@@ -6,7 +6,7 @@ const app = express();
 
 const db = require("./app/models");
 db.mongoose
-  .connect(db.url, {
+  .connect(db.dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-require("./app/routes/tutorial.routes")(app);
+require("./app/routes/course.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
