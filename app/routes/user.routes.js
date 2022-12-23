@@ -8,6 +8,8 @@ module.exports = app => {
   
     // Retrieve all users
     router.get("/", users.findAll);
+
+    router.get("/:utente_id/courses", users.findCoursesForUser);
   
     app.use('/api/users', router);
   };

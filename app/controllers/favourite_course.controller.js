@@ -1,5 +1,5 @@
 const db = require("../models");
-const Favourite_course = db.favourite_course;
+const Favourite_course = db.Favourite_course;
 
 // Create and Save a new fav_course
 exports.create = (req, res) => {
@@ -28,4 +28,3 @@ exports.create = (req, res) => {
             });
         });
 };
-
