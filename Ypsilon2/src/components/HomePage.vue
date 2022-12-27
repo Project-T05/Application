@@ -6,15 +6,7 @@
     <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: relative; left: 1200px; top:-50px; border-radius: 60px; ">
     <p style="position: relative; left: 1180px; top:-110px;" >NOME PROFILO</p>
     <p></p>
-    <HomePage label="HomePage" style="margin-top:120px; margin-left: 45px;"  />
-    <p></p>
-
-    <RicercaCorsi label="Ricerca corsi" style="margin-top:70px;  margin-left: 45px;" />
-    <p></p>
-  
-    <AreaProfilo label="Profilo Personale" style="margin-top:70px;  margin-left: 45px;" />
-
-    <p></p>
+   
 
     <p style="position: absolute; left: 360px; top:130px;font-size: x-large; font-weight: bold;" >I tuoi Corsi preferiti:</p>
     
@@ -48,9 +40,7 @@
 
 <script>
 
-import HomePage from './My-Bottone.vue'
-import RicercaCorsi from './My-Bottone.vue'
-import AreaProfilo from './My-Bottone.vue'
+
 import MyRectangle from './MyRectangle.vue'
 import Corso from './My-Corso.vue'
 
@@ -59,7 +49,7 @@ import Corso from './My-Corso.vue'
 
 export default {
   components: {
-    HomePage, RicercaCorsi,AreaProfilo,MyRectangle,Corso
+    MyRectangle,Corso
   }
 }
 
