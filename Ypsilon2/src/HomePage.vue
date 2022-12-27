@@ -54,16 +54,6 @@ import RicercaCorsi from './components/My-Bottone.vue'
 import AreaProfilo from './components/My-Bottone.vue'
 import MyRectangle from './components/MyRectangle.vue'
 import Corso from './components/My-Corso.vue'
-import request from 'postman-request';
-
-// Eseguire una richiesta GET
-request.get("http://localhost:8080/api/users/63a5c5989075ad6f17d16b99/courses", (error, response, body) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log(response.statusCode, body);
-  }
-});
 
 
 
