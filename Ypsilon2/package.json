@@ -19,7 +19,7 @@
     "util": "^0.12.5",
     "view-router": "^0.2.3",
     "vue": "^3.2.45",
-    "vue-router": "^3.6.5"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
