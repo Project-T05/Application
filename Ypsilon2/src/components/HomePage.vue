@@ -52,12 +52,13 @@ export default {
   },
   methods: {
     async first_api(){
-      let config = {
-        header: {
-          'Accept': 'application.json'}
-      }
-      const joke = await axios.get('http://localhost:8080/api/users/63a5c5989075ad6f17d16b99/courses', config);
+      let base_api = 'http://localhost:8080/api/';
+      const joke = await axios.get(base_api+'users/'+'63a5c5989075ad6f17d16b99'+'/courses');//il numero in mezzo è l'id dello user collegato
+      const jokee = await axios.get(base_api+'users/');//lista users
+      const jokeee = await axios.get(base_api+'courses/');//lista corsi
       this.joke = joke.data
+      this.joke = jokee.data
+      this.joke = jokeee.data
     }
   }
 }
