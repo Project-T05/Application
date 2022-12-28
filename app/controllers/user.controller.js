@@ -69,9 +69,14 @@ exports.findCoursesForUser = (req, res) => {
         .then(data => {
           const coursesWithIsFavourite = data.map((course) => {
             return {
-              ...course,
-              is_favourite: courseIds.includes(course._id),
-            };
+              id: course.id,
+              nome: course.nome,
+              numero_cfu: course.numero_cfu,
+              valutazione_corso: course.valutazione_corso,
+              attivo: course.attivo,
+              // Aggiungi qui altre proprietà se necessario
+              is_favourite: courseIds.includes(course.id)
+            }
           });
           res.send(coursesWithIsFavourite);
         })
