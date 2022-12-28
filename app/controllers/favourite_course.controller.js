@@ -40,18 +40,27 @@ exports.create = (req, res) => {
   });
 };
 
-// Delete a Course with the specified id in the request
-exports.delete = (req, res) => {
-  if (!req.body.utente_id || !req.body.corso_id) {
-    res.status(400).send({ message: "Content can not be empty!" });
+exports.deleteFromFavourites = (req, res) => {
+  // Verifica che l'ID utente e l'ID corso siano presenti nella richiesta
+  if (!req.params.utente_id || !req.params.corso_id) {
+    res.status(400).send({ message: "Utente ID and course ID can not be empty." });
     return;
   }
 
-  Favourite_course.deleteOne({ utente_id: req.body.utente_id, corso_id: req.body.corso_id })
-  .then(() => {
-    res.send({ message: "Favourite course was deleted successfully." });
-  })
-  .catch((err) => {
-    res.status(500).send({ message: err.message || "Error occurred while deleting favourite course." });
-  });
+  // Cerca l'associazione corso-utente da eliminare
+  Favourite_course.findOneAndDelete({ utente_id: req.params.utente_id, corso_id: req.params.corso_id })
+    .then((association) => {
+      if (!association) {
+        res.status(404).send({ message: "Association not found." });
+        return;
+      }
+      res.send({ message: "Association was deleted successfully." });
+    })
+    .catch((err) => {
+      if (err.kind === "ObjectId" || err.name === "NotFound") {
+        res.status(404).send({ message: "Association not found." });
+      } else {
+        res.status(500).send({ message: "Could not delete association." });
+      }
+    });
 };

@@ -59,8 +59,9 @@
     if (!this.item.is_favourite) {
       axios.post(base_api+'favourite_courses/', data);//lista users
     } else {
-      axios.delete(base_api+'favourite_courses');//lista corsi
+      axios.delete(base_api+'favourite_courses/63a5c5989075ad6f17d16b99/'+this.item.id);//lista corsi
     }
+    location.reload();
   }
 }
   }
