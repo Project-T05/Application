@@ -12,12 +12,12 @@
       <tr>
         
         <td style="border-radius: 10px; text-align: center;">
-            <router-link to="./courses/name">
+            <router-link to="/corso">
             {{ item.nome }}
             </router-link>
         </td>
          
-        <td style="font-size: large; border-radius: 10px; text-align: center;">{{ item.valutazione_corso }}</td>
+        <td style="font-size: large; border-radius: 10px; text-align: center; ">{{ item.valutazione_corso }}</td>
       </tr>
     </table>
 

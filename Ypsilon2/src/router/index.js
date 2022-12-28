@@ -9,7 +9,7 @@ const routes =  [
     { path: '/', name: 'home', component: HomePage },
     { path: '/courses', name: 'courses', component: RicercaCorsi },
     { path: '/profile', name: 'profile', component: AreaProfilo },
-    { path: '/courses/name', name: 'course', component: MyCorso },
+    { path: '/corso', name: 'course', component: MyCorso },
     
 
 

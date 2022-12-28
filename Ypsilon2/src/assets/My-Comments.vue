@@ -1,21 +1,27 @@
 <template>
+  <table class="conteiner" style="position: absolute; left:500px; top:80px;">
     <table class="comments">
+      <div style="overflow-y: scroll; height: 500px; position: relative; left: 50px;">
       <tr v-for="comment in sortedComments" :key="comment.id">
         <td class="comment-author">{{ comment.user }}:</td>
         <td class="comment-text">{{ comment.text }}</td>
         <td class="comment-likes-dislikes">
-          <img src="path/to/like-image" @click="likeComment(comment)" /> {{ comment.likes }}
-          <img src="path/to/dislike-image" @click="dislikeComment(comment)" /> {{ comment.dislikes }}
+        
+          <img src="./LikeButton.png" style="width: 20px; height: 20px;" @click="likeComment(comment)" /> {{ comment.likes }}
+          <img src="./DislikeButton.png" style="width: 15px; height: 15px;" @click="dislikeComment(comment)" /> {{ comment.dislikes }}
         </td>
         <td class="comment-actions">
           <button v-if="comment.user === currentUser" @click="deleteComment(comment)">Elimina</button>
         </td>
       </tr>
+    </div>
     </table>
-    <form @submit.prevent="addComment" class="add-comment-form">
-      <textarea v-model="newCommentText" placeholder="Scrivi il tuo commento" style="width: 500px; height: 100px;"></textarea>
-      <button type="submit">Invia</button>
-    </form>
+    
+    <div>
+  <input v-model="newCommentText" placeholder="Scrivi il tuo commento" style="width: 500px; height: 100px;" />
+  <button @click="addComment">Invia</button>
+</div>
+
     <div class="sort-menu">
       <button
         v-bind:class="{ active: sortBy === 'chronological' }"
@@ -30,6 +36,7 @@
         Mi piace
       </button>
     </div>
+  </table>
   </template>
   <script>
   export default {
@@ -57,16 +64,19 @@
     
     methods: {
       addComment() {
-        this.comments.push({
-          id: Date.now(),
-          text: this.newCommentText,
-          user: 'Leonardo_Bridi', // sostituire con il nome dell'utente corrente
-          likes: 0,
-          dislikes: 0,
-          voted: null
-        })
-        this.newCommentText = ''
-      },
+  if (this.newCommentText.trim() !== '') {
+    this.comments.push({
+      id: Date.now(),
+      text: this.newCommentText,
+      user: 'Leonardo_Bridi', // sostituire con il nome dell'utente corrente
+      likes: 0,
+      dislikes: 0,
+      voted: null
+    })
+    this.newCommentText = ''
+  }
+},
+
       deleteComment(comment) {
         const index = this.comments.indexOf(comment)
         this.comments.splice(index, 1)

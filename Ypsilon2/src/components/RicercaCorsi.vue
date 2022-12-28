@@ -4,9 +4,9 @@
     <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1250px; top:60px; border-radius: 60px; ">
     <p style="position: absolute; left: 1130px; top:65px;" >NOME PROFILO</p>
     <p style="height: 50px;"></p>
-    <div style="overflow-y: scroll; height: 500px; ">
+    <div style="overflow-y: scroll; height: 500px; position: relative; left: 300px; ">
       <template v-for="(item, index) in items" :key="index">
-        <MyCorso2 style=" position: relative; margin:30px; left:300px;" :item="item"/>
+        <MyCorso2 style=" position: relative; margin:30px; " :item="item"/>
       </template>
     </div>
   </div>

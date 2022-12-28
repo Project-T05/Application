@@ -23,7 +23,7 @@
       </template>
     </template>
     
-    <button @click="first_api()" type="button">prova Api</button>
+    
     
   </div>
 
