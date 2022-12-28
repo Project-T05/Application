@@ -60,6 +60,48 @@ exports.findCoursesForUser = (req, res) => {
     .then((associations) => {
       // Extract the course IDs from the associations
       const courseIds = associations.map((association) => association.corso_id);
+      
+      const nome = req.query.nome;
+      var condition = nome ? { nome: { $regex: new RegExp(nome), $options: "i" } } : {};
+    
+      Course.find(condition)
+        .populate("utente_id", "nome cognome")
+        .then(data => {
+          const coursesWithIsFavourite = data.map((course) => {
+            return {
+              ...course,
+              is_favourite: courseIds.includes(course.id),
+            };
+          });
+          res.send(coursesWithIsFavourite);
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while retrieving courses."
+          });
+        });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving course-user associations for user.",
+      });
+    });
+};
+
+// Retrieve all fav courses for a specific user
+exports.findFavCoursesForUser = (req, res) => {
+  // Validate request
+  if (!req.params.utente_id) {
+    res.status(400).send({ message: "User ID can not be empty!" });
+    return;
+  }
+
+  // Find all course-user associations for the specified user
+  Favourite_course.find({ utente_id: req.params.utente_id })
+    .then((associations) => {
+      // Extract the course IDs from the associations
+      const courseIds = associations.map((association) => association.corso_id);
 
       // Find all courses with the extracted IDs
       Course.find({ _id: { $in: courseIds } })
