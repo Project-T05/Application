@@ -70,7 +70,7 @@ exports.findCoursesForUser = (req, res) => {
           const coursesWithIsFavourite = data.map((course) => {
             return {
               ...course,
-              is_favourite: courseIds.includes(course._id),
+              is_favourite: courseIds.includes(course.id),
             };
           });
           res.send(coursesWithIsFavourite);

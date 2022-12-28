@@ -58,7 +58,7 @@ export default {
     },
     async favoriti(){
       let base_api = 'http://localhost:8080/api/';
-      const jokeee = await axios.get(base_api+'users/'+ "63a5c5989075ad6f17d16b99/courses/");//lista corsi
+      const jokeee = await axios.get(base_api+'users/'+ "63a5c5989075ad6f17d16b99/fav_courses/");//lista corsi
       this.corsi_favoriti = jokeee.data
     }
   },
