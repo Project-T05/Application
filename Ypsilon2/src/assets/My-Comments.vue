@@ -64,16 +64,19 @@
     
     methods: {
       addComment() {
-        this.comments.push({
-          id: Date.now(),
-          text: this.newCommentText,
-          user: 'Leonardo_Bridi', // sostituire con il nome dell'utente corrente
-          likes: 0,
-          dislikes: 0,
-          voted: null
-        })
-        this.newCommentText = ''
-      },
+  if (this.newCommentText.trim() !== '') {
+    this.comments.push({
+      id: Date.now(),
+      text: this.newCommentText,
+      user: 'Leonardo_Bridi', // sostituire con il nome dell'utente corrente
+      likes: 0,
+      dislikes: 0,
+      voted: null
+    })
+    this.newCommentText = ''
+  }
+},
+
       deleteComment(comment) {
         const index = this.comments.indexOf(comment)
         this.comments.splice(index, 1)
