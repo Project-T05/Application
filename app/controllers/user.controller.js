@@ -59,7 +59,7 @@ exports.findCoursesForUser = (req, res) => {
   Favourite_course.find({ utente_id: req.params.utente_id })
     .then((associations) => {
       // Extract the course IDs from the associations
-      const courseIds = associations.map((association) => association.corso_id);
+      const courseIds = associations.map((association) => association.corso_id.toString());
       
       const nome = req.query.nome;
       var condition = nome ? { nome: { $regex: new RegExp(nome), $options: "i" } } : {};
