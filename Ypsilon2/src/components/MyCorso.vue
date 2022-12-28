@@ -3,6 +3,11 @@
         <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1250px; top:60px; border-radius: 60px; ">
     <p style="position: absolute; left: 1130px; top:65px;" >NOME PROFILO</p>
     <p></p>
+    <td colspan="5" style="text-align: center; font-weight: bold; position:absolute; left: 300px; top:200px; font-size:150%">Statistiche del corso</td>
+        <img src="../assets/statistiche1.png" style="width: 300px;height:250px; position:absolute; left: 300px; top:230px" >
+        <img src="../assets/Statistiche2.png" style="width: 300px;height:250px; position:absolute; left: 700px; top:230px">
+        <img src="../assets/Statistiche3.png" style="width: 300px;height:250px; position:absolute; left: 300px; top:600px">
+        <img src="../assets/statistiche4.png" style="width: 300px;height:250px; position:absolute; left: 700px; top:600px">
     <Corso style="position: absolute; left:300px; top:20px;"/>
     <div>
         <Rating style="position: absolute; left:700px; top:50px;"/>

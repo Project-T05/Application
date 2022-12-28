@@ -5,8 +5,8 @@
         <td class="comment-author">{{ comment.user }}:</td>
         <td class="comment-text">{{ comment.text }}</td>
         <td class="comment-likes-dislikes">
-          <img src="path/to/like-image" @click="likeComment(comment)" /> {{ comment.likes }}
-          <img src="path/to/dislike-image" @click="dislikeComment(comment)" /> {{ comment.dislikes }}
+          <img src="./LikeButton.png" style="width: 20px; height: 20px;" @click="likeComment(comment)" /> {{ comment.likes }}
+          <img src="./DislikeButton.png" style="width: 15px; height: 15px;" @click="dislikeComment(comment)" /> {{ comment.dislikes }}
         </td>
         <td class="comment-actions">
           <button v-if="comment.user === currentUser" @click="deleteComment(comment)">Elimina</button>
