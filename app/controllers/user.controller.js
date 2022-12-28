@@ -74,6 +74,7 @@ exports.findCoursesForUser = (req, res) => {
               numero_cfu: course.numero_cfu,
               valutazione_corso: course.valutazione_corso,
               attivo: course.attivo,
+              utente_id: course.utente_id,
               // Aggiungi qui altre proprietà se necessario
               is_favourite: courseIds.includes(course.id)
             }
