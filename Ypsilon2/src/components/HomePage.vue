@@ -1,10 +1,10 @@
 <template>
   <div class="no-scroll">
-    <MyRectangle style="z-index: -1;"/>
+   
     
-    <img src="../assets/logo.jpg" style="width: 120px; height: 120px; position: relative; left: 60px; top: 20px; border-radius: 15px; box-shadow: 0px 0px 10px 5px rgba(0, 0, 0,0.1);">
-    <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: relative; left: 1200px; top:-50px; border-radius: 60px; ">
-    <p style="position: relative; left: 1180px; top:-110px;" >NOME PROFILO</p>
+   
+    <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1250px; top:60px; border-radius: 60px; ">
+    <p style="position: absolute; left: 1130px; top:65px;" >NOME PROFILO</p>
     <p></p>
     
     
@@ -27,23 +27,17 @@
 
 </template>
 
-<style>
-.no-scroll {
-  overflow: hidden;
-}
-
-</style>
 
 <script>
 
 
-import MyRectangle from './MyRectangle.vue'
-import Corso from './My-Corso.vue'
+
 import axios from 'axios'
+import Corso from '../assets/My-Corso.vue'
 
 export default {
   components: {
-    MyRectangle,Corso
+    Corso
   },
   data(){
     return {
