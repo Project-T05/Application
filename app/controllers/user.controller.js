@@ -122,7 +122,7 @@ exports.findFavCoursesForUser = (req, res) => {
               attivo: course.attivo,
               utente_id: course.utente_id,
               // Aggiungi qui altre proprietà se necessario
-              is_favourite: courseIds.includes(course.id)
+              is_favourite: true
             }
           });
           res.send(coursesWithIsFavourite);
