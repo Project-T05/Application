@@ -1,11 +1,12 @@
 <template>
-
+  
     <table v-if="item" class="gray-table" style="border-radius: 10px; width: 220px; height: 120px;">
       <tr v-if="item">
         <td style="border-radius: 10px; text-align: center;">{{` ${item.utente_id["nome"]}  ${item.utente_id["cognome"]} `}}</td>
         <td style="border-radius: 10px; display: flex; align-items: center; justify-content: center;">
           <button style="width: 40px; height: 40px; border-radius: 60px; display: flex; align-items: center; justify-content: center;">    
-            <img :src="isLiked ? '../assets/likeoff.png' : '../assets/like.png'" style="width: 36px; height:36px; border-radius: 60px;">
+            <img v-if="item.is_favourite" src="../assets/like.png" style="width: 36px; height:36px; border-radius: 60px; ">
+            <img v-else src="../assets/likeoff.png" style="width: 36px; height:36px; border-radius: 60px; ">
           </button>
         </td>
       </tr>
@@ -35,7 +36,6 @@
 
 
   <script>
-  
   import { object } from 'webidl-conversions';
 
   export default {
