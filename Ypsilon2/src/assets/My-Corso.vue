@@ -12,13 +12,13 @@
       <tr style="height: 80px; ">
         
         <td colspan="2" style="font-size: large; border-radius: 10px; text-align: center;">
-          <router-link to="./courses/name">
-          {{ item.nome }}
+          <router-link to="/corso">
+            NOME CORSO
         </router-link></td>
       
       </tr>
       <tr style="height: 40px;">
-        <td colspan="2" style="font-size: large; border-radius: 10px; text-align: center;">{{ item.valutazione_corso }}</td>
+        <td colspan="2" style="font-size: large; border-radius: 10px; text-align: center;">val</td>
     </tr>
     </table>
   </template>
