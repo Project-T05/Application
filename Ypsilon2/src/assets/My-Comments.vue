@@ -1,10 +1,12 @@
 <template>
   <table class="conteiner" style="position: absolute; left:500px; top:80px;">
     <table class="comments">
+      <div style="overflow-y: scroll; height: 500px; position: relative; left: 50px;">
       <tr v-for="comment in sortedComments" :key="comment.id">
         <td class="comment-author">{{ comment.user }}:</td>
         <td class="comment-text">{{ comment.text }}</td>
         <td class="comment-likes-dislikes">
+        
           <img src="./LikeButton.png" style="width: 20px; height: 20px;" @click="likeComment(comment)" /> {{ comment.likes }}
           <img src="./DislikeButton.png" style="width: 15px; height: 15px;" @click="dislikeComment(comment)" /> {{ comment.dislikes }}
         </td>
@@ -12,6 +14,7 @@
           <button v-if="comment.user === currentUser" @click="deleteComment(comment)">Elimina</button>
         </td>
       </tr>
+    </div>
     </table>
     
     <div>
