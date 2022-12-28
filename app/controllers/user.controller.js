@@ -112,8 +112,20 @@ exports.findFavCoursesForUser = (req, res) => {
       // Find all courses with the extracted IDs
       Course.find({ _id: { $in: courseIds } })
         .populate("utente_id", "nome cognome")
-        .then((courses) => {
-          res.send(courses);
+        .then((data) => {
+          const coursesWithIsFavourite = data.map((course) => {
+            return {
+              id: course.id,
+              nome: course.nome,
+              numero_cfu: course.numero_cfu,
+              valutazione_corso: course.valutazione_corso,
+              attivo: course.attivo,
+              utente_id: course.utente_id,
+              // Aggiungi qui altre proprietà se necessario
+              is_favourite: courseIds.includes(course.id)
+            }
+          });
+          res.send(coursesWithIsFavourite);
         })
         .catch((err) => {
           res.status(500).send({
