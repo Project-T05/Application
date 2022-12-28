@@ -1,4 +1,5 @@
 <template>
+  <table class="conteiner" style="position: absolute; left:500px; top:80px;">
     <table class="comments">
       <tr v-for="comment in sortedComments" :key="comment.id">
         <td class="comment-author">{{ comment.user }}:</td>
@@ -12,10 +13,12 @@
         </td>
       </tr>
     </table>
-    <form @submit.prevent="addComment" class="add-comment-form">
-      <textarea v-model="newCommentText" placeholder="Scrivi il tuo commento" style="width: 500px; height: 100px;"></textarea>
-      <button type="submit">Invia</button>
-    </form>
+    
+    <div>
+  <input v-model="newCommentText" placeholder="Scrivi il tuo commento" style="width: 500px; height: 100px;" />
+  <button @click="addComment">Invia</button>
+</div>
+
     <div class="sort-menu">
       <button
         v-bind:class="{ active: sortBy === 'chronological' }"
@@ -30,6 +33,7 @@
         Mi piace
       </button>
     </div>
+  </table>
   </template>
   <script>
   export default {
