@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="overflow: hidden">
         <img src="../assets/profilepic.png" style="width: 90px; height: 90px; position: absolute; left: 350px; top:60px; border-radius: 60px; ">
         <p style="position: absolute; left: 450px; top:65px; font-size: x-large;" >NOME PROFILO</p>
         <select id="language-select" v-model="selectedLanguage" style="position: absolute; top: 200px; left: 400px; width: 150px; font-size: medium; background-color: lightgray;">

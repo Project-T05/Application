@@ -6,7 +6,7 @@ import MyCorso from '../components/MyCorso.vue'
 
 
 const routes =  [
-    { path: '/home', name: 'home', component: HomePage },
+    { path: '/', name: 'home', component: HomePage },
     { path: '/courses', name: 'courses', component: RicercaCorsi },
     { path: '/profile', name: 'profile', component: AreaProfilo },
     { path: '/courses/name', name: 'course', component: MyCorso },
