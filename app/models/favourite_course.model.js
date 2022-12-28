@@ -3,12 +3,8 @@ var Schema = mongoose.Schema;
 module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
-      utente_id: [
-        {type: Schema.Types.ObjectId, ref: 'user'}
-      ],
-      corso_id: [
-        {type: Schema.Types.ObjectId, ref: 'course'}
-      ]
+      utente_id: {type: Schema.Types.ObjectId, ref: 'user'},
+      corso_id: {type: Schema.Types.ObjectId, ref: 'course'}
     },
     { timestamps: true }
   );
