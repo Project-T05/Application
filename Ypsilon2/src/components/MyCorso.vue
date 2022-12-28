@@ -13,7 +13,7 @@
     <div>
         <Rating style="position: absolute; left:700px; top:50px;"/>
         
-            <Commenti style="position: absolute; left:300px; top:250px;"/>
+            <Commenti style="position: absolute; left:300px; top:800px;"/>
     
             
         
