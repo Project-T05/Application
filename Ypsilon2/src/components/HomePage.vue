@@ -11,13 +11,17 @@
     <p style="position: absolute; left: 360px; top:130px;font-size: x-large; font-weight: bold;" >I tuoi Corsi preferiti:</p>
     
     <template v-for="(item, index) in corsi_favoriti" :key="index">
-      <Corso style="position: absolute; left:400px; top: 500px;" :item="corsi_favoriti[0]"/>
+      <template v-if="index < 3">
+        <Corso :style="{ position: 'absolute', left: `${400 + (index * 300)}px`, top: '200px' }" :item="item"/>
+      </template>
     </template>
     
     <p style="position: absolute; left: 360px; top:430px;font-size: x-large; font-weight: bold;" >I Corsi più votati:</p>
-    <Corso style="position: absolute; left:400px; top: 500px;"  :item="corsi[0]"/>
-    <Corso style="position: absolute; left:700px; top: 500px;" :item="corsi[1]"/>
-    <Corso style="position: absolute; left:1000px; top: 500px;" :item="corsi[2]"/>
+    <template v-for="(item, index) in corsi" :key="index">
+      <template v-if="index < 3">
+        <Corso :style="{ position: 'absolute', left: `${400 + (index * 300)}px`, top: '500px' }" :item="item"/>
+      </template>
+    </template>
     
     <button @click="first_api()" type="button">prova Api</button>
     
@@ -54,9 +58,8 @@ export default {
     },
     async favoriti(){
       let base_api = 'http://localhost:8080/api/';
-      const jokeee = await axios.get(base_api+'users/'+ "63a5c5989075ad6f17d16b99/courses");//lista corsi
+      const jokeee = await axios.get(base_api+'users/'+ "63a5c5989075ad6f17d16b99/courses/");//lista corsi
       this.corsi_favoriti = jokeee.data
-      
     }
   },
   beforeMount(){
