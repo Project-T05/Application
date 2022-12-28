@@ -38,6 +38,7 @@ exports.findAll = (req, res) => {
     var condition = nome ? { nome: { $regex: new RegExp(nome), $options: "i" } } : {};
   
     Course.find(condition)
+      .populate("utente_id", "nome cognome")
       .then(data => {
         res.send(data);
       })

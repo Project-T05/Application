@@ -63,6 +63,7 @@ exports.findCoursesForUser = (req, res) => {
 
       // Find all courses with the extracted IDs
       Course.find({ _id: { $in: courseIds } })
+        .populate("utente_id", "nome cognome")
         .then((courses) => {
           res.send(courses);
         })

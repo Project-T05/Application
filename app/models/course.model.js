@@ -8,9 +8,7 @@ module.exports = mongoose => {
       numero_cfu: Number,
       valutazione_corso: Number,
       attivo: Number,
-      utente_id: [
-        {type: Schemaa.Types.ObjectId, ref: 'User'}
-      ]
+      utente_id: {type: Schemaa.Types.ObjectId, ref: 'User'}
     },
     { timestamps: true }
   );

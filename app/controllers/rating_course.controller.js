@@ -1,5 +1,5 @@
 const db = require("../models");
-const Favourite_course = db.Favourite_course;
+const Rating_course = db.Rating_course;
 
 // Create and Save a new fav_course
 exports.create = (req, res) => {
@@ -9,19 +9,19 @@ exports.create = (req, res) => {
     return;
   }
 
-  const favourite_course = new Favourite_course({
+  const rating_course = new Rating_course({
     utente_id: req.body.utente_id,
     corso_id: req.body.corso_id,
   });
 
-  Favourite_course.find({ utente_id: req.body.utente_id, corso_id: req.body.corso_id })
+  Rating_course.find({ utente_id: req.body.utente_id, corso_id: req.body.corso_id })
   .then((associations) => {
     if (associations.length > 0){
       res.status(500).send({
-        message: "There is already a favourite association for this user."
+        message: "There is already a rating association for this user."
       });
     } else {
-      favourite_course.save(favourite_course)
+      rating_course.save(rating_course)
       .then(data => {
           res.send(data);
       })
@@ -35,7 +35,7 @@ exports.create = (req, res) => {
   })
   .catch((err) => {
     res.status(500).send({
-      message: err.message || "Error occurred while checking for existing favourite association."
+      message: err.message || "Error occurred while checking for existing rating association."
     });
   });
 };
@@ -47,11 +47,11 @@ exports.delete = (req, res) => {
     return;
   }
 
-  Favourite_course.deleteOne({ utente_id: req.body.utente_id, corso_id: req.body.corso_id })
+  Rating_course.deleteOne({ utente_id: req.body.utente_id, corso_id: req.body.corso_id })
   .then(() => {
-    res.send({ message: "Favourite course was deleted successfully." });
+    res.send({ message: "Rating course was deleted successfully." });
   })
   .catch((err) => {
-    res.status(500).send({ message: err.message || "Error occurred while deleting favourite course." });
+    res.status(500).send({ message: err.message || "Error occurred while deleting rating course." });
   });
 };
