@@ -1,8 +1,8 @@
 <template>
   <div id="app" style="overflow: hidden">
     <input type="text" v-model="searchTerm" placeholder="Cerca..." style="position: absolute; top: 100px; left: 350px; height: 30px; width: 500px; background-color: #D8D8D8; font-weight: bold; border-radius: 20px;">
-    <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1250px; top:60px; border-radius: 60px; ">
-    <p style="position: absolute; left: 1130px; top:65px;" >NOME PROFILO</p>
+    <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1350px; top:20px; border-radius: 60px; ">
+    <p style="position: absolute; left: 1230px; top:25px;" >NOME PROFILO</p>
     <p style="height: 50px;"></p>
     <div style="overflow-y: scroll; height: 500px; position: relative; left: 300px; ">
       <template v-for="(item, index) in items" :key="index">

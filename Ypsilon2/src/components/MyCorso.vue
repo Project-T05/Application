@@ -1,19 +1,18 @@
 <template>
     <div style="overflow: hidden">
-        <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1250px; top:60px; border-radius: 60px; ">
-    <p style="position: absolute; left: 1130px; top:65px;" >NOME PROFILO</p>
+      <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1350px; top:20px; border-radius: 60px; ">
+    <p style="position: absolute; left: 1230px; top:25px;" >NOME PROFILO</p>
     <p></p>
-    <div style="overflow-y: scroll; height: 500px; position: relative;">
+    <div style="overflow-y: scroll; height: 600px; position: relative;">
     <td colspan="5" style="text-align: center; font-weight: bold; position:absolute; left: 300px; top:200px; font-size:150%">Statistiche del corso</td>
         <img src="../assets/statistiche1.png" style="width: 300px;height:200px; position:absolute; left: 300px; top:250px; border-radius:20px;" >
-        <img src="../assets/Statistiche2.png" style="width: 300px;height:200px; position:absolute; left: 700px; top:250px; border-radius:20px;">
+        <img src="../assets/Statistiche2.png" style="width: 300px;height:200px; position:absolute; left: 800px; top:250px; border-radius:20px;">
         <img src="../assets/Statistiche3.png" style="width: 300px;height:200px; position:absolute; left: 300px; top:500px; border-radius:20px;">
-        <img src="../assets/statistiche4.png" style="width: 300px;height:200px; position:absolute; left: 700px; top:500px; border-radius:20px;">
-    <Corso style="position: absolute; left:300px; top:20px;"/>
+        <img src="../assets/statistiche4.png" style="width: 300px;height:200px; position:absolute; left: 800px; top:500px; border-radius:20px;">
+    <Corso style="position: absolute; left:300px; top:20px;" :item="item"/>
     <div>
-        <Rating style="position: absolute; left:700px; top:50px;"/>
-        
-            <Commenti style="position: absolute; left:300px; top:800px;"/>
+      <Rating style="position: absolute; left:700px; top:50px;"/>
+      <Commenti style="position: absolute; left:300px; top:800px;"/>
     
             
         

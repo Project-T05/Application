@@ -1,13 +1,13 @@
 <template>
-  <table class="conteiner" style="position: absolute; left:500px; top:80px;">
+  <table class="conteiner" style="position: absolute; left:500px; top:80px; border: 2px solid gray; background-color: lightgray;">
     <table class="comments">
-      <div style="overflow-y: scroll; height: 500px; position: relative; left: 50px;">
+      <div style="overflow-y: scroll; height: 400px; position: relative; left: 50px; ">
       <tr v-for="comment in sortedComments" :key="comment.id">
         <td class="comment-author">{{ comment.user }}:</td>
         <td class="comment-text">{{ comment.text }}</td>
         <td class="comment-likes-dislikes">
         
-          <img src="./LikeButton.png" style="width: 20px; height: 20px;" @click="likeComment(comment)" /> {{ comment.likes }}
+          <img src="./LikeButton.png" style="width: 20px; height: 20px; margin-left: 50px;;" @click="likeComment(comment)" /> {{ comment.likes }}
           <img src="./DislikeButton.png" style="width: 15px; height: 15px;" @click="dislikeComment(comment)" /> {{ comment.dislikes }}
         </td>
         <td class="comment-actions">

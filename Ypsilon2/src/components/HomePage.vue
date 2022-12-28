@@ -3,8 +3,8 @@
    
     
    
-    <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1250px; top:60px; border-radius: 60px; ">
-    <p style="position: absolute; left: 1130px; top:65px;" >NOME PROFILO</p>
+    <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1350px; top:20px; border-radius: 60px; ">
+    <p style="position: absolute; left: 1230px; top:25px;" >NOME PROFILO</p>
     <p></p>
     
     
