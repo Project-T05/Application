@@ -6,7 +6,7 @@
     
 
     <div style="overflow-y: scroll; height: 620px; position: relative; left:200px;">
-      <Corso style="position:absolute; left:100px;" :item="this.corso"/>
+      <Corso v-if="corso" style="position:absolute; left:100px;" :item="corso"/>
     <td colspan="5" style="text-align: center; font-weight: bold; position:absolute; left: 100px; top:200px; font-size:150%">Statistiche del corso</td>
         <img src="../assets/statistiche1.png" style="width: 350px;height:230px; position:absolute; left: 100px; top:250px; border-radius:20px;" >
         <img src="../assets/Statistiche2.png" style="width: 350px;height:230px; position:absolute; left: 700px; top:250px; border-radius:20px;">
@@ -43,7 +43,7 @@ export default {
   data(){
     return {
       corso_id: this.$route.params.id,
-      corso: {}
+      corso: null
     }
   },
   methods: {
@@ -58,7 +58,7 @@ export default {
       if (!this.corso.is_favourite) {
         axios.post(base_api+'favourite_courses/', data);//lista users
       } else {
-        axios.delete(base_api+'favourite_courses/63a5c5989075ad6f17d16b99/'+this.corso.id);//lista corsi
+        axios.delete(base_api+'favourite_courses/63a5c5989075ad6f17d16b99/'+this.corso_id);//lista corsi
       }
       location.reload();
     },

@@ -81,6 +81,7 @@ exports.findOneWithFavorite = (req, res) => {
       } else {
         const favouriteCourse = await Favourite_course.findOne({ utente_id: utente_id, corso_id: id });
         data = data.toObject()
+        data.id = data._id
         if (favouriteCourse) {
           data.is_favourite = true;
         } else {
