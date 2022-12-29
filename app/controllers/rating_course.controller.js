@@ -62,6 +62,7 @@ exports.findAndUpdate = (req, res) => {
     { utente_id: req.params.utente_id, corso_id: req.params.corso_id },
     { $set: { valutazione: req.body.valutazione } },
     { upsert: true, new: true }
+  // con upsert se non lo trova lo crea nuovo!
   )
     .then((rating) => {
       res.send(rating);
