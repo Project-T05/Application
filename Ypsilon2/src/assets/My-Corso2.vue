@@ -13,9 +13,9 @@
       <tr>
         
         <td style="border-radius: 10px; text-align: center;">
-            <router-link to="/corso">
+          <router-link :to="{ path: '/corso/' + item.id }">
             {{ item.nome }}
-            </router-link>
+          </router-link>
         </td>
          
         <td style="font-size: large; border-radius: 10px; text-align: center; ">{{ item.valutazione_corso }}</td>
