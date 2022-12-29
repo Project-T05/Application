@@ -66,6 +66,7 @@ exports.findCoursesForUser = (req, res) => {
     
       Course.find(condition)
         .populate("utente_id", "nome cognome")
+        .sort({ valutazione_corso: -1 })
         .then(data => {
           const coursesWithIsFavourite = data.map((course) => {
             return {
