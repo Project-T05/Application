@@ -54,7 +54,6 @@ export default {
       let base_api = 'http://localhost:8080/api/';
       const jokeee = await axios.get(base_api+'users/'+"63a5c5989075ad6f17d16b99/courses/");//lista corsi
       this.corsi = jokeee.data
-      
     },
     async favoriti(){
       let base_api = 'http://localhost:8080/api/';

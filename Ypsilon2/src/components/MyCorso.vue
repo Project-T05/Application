@@ -14,7 +14,7 @@
       <p style="position: absolute; left:250px; top:770px; font-weight: bolder; font-family:Arial, Helvetica, sans-serif ; font-size: larger; ">AREA COMMENTI</p>
       <p style="position: absolute; left:830px; top:770px; font-weight: bolder; font-family:Arial, Helvetica, sans-serif ; font-size: larger; ">AREA Q&A</p>
 
-      <Rating style="position: absolute; left:500px; top:50px;"/>
+      <Rating style="position: absolute; left:500px; top:50px;" />
       <Commenti style="position: absolute; left:100px; top:850px;"/>
       <Commenti style="position: absolute; left:650px; top:850px;"/>
             
@@ -36,6 +36,12 @@ export default {
   components: {
      Rating, Commenti
   },
+  data(){
+    return {
+      corso_id: this.$route.params.id,
+      item: {}
+    }
+  },
   methods: {
     handleClick() {
     let base_api = 'http://localhost:8080/api/';
@@ -51,7 +57,15 @@ export default {
         axios.delete(base_api+'favourite_courses/63a5c5989075ad6f17d16b99/'+this.item.id);//lista corsi
       }
       location.reload();
-    }
+    },
+    async get_corso(){
+      let base_api = 'http://localhost:8080/api/';
+      const jokeee = await axios.get(base_api+'courses/'+this.corso_id);//lista corsi
+      this.corso = jokeee.data
+    },
+  },
+  beforeMount(){
+    this.get_corso()
   }
 }
 </script>

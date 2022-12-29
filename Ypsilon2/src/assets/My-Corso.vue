@@ -12,9 +12,10 @@
       </tr>
       <tr style="height: 80px; ">
         <td colspan="2" style="font-size: large; border-radius: 10px; text-align: center;">
-          <router-link to="/corso">
+          <router-link :to="{ path: '/corso/' + item.id }">
             {{ item.nome }}
-        </router-link></td>
+          </router-link>
+        </td>
       
       </tr>
       <tr style="height: 40px;">

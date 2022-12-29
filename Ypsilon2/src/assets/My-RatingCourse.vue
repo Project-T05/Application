@@ -30,12 +30,6 @@
 import axios from 'axios'
 
 export default {
-  props: {
-    courseId: {
-      type: String,
-      required: true
-    }
-  },
   data() {
     return {
       ratings: {}
@@ -56,7 +50,7 @@ export default {
         valutazione: value
       }
         if (value !=null)
-          axios.post(base_api+'rating_courses/63a5c5989075ad6f17d16b99/'+this.item.id, data);//lista users
+          axios.post(base_api+'rating_courses/63a5c5989075ad6f17d16b99/'+this.$route.params.id, data);//lista users
         else
           alert()
     }
