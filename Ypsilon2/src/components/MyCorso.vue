@@ -64,7 +64,7 @@ export default {
     },
     async get_corso(){
       let base_api = 'http://localhost:8080/api/';
-      const jokeee = await axios.get(base_api+'courses/'+this.corso_id);//lista corsi
+      const jokeee = await axios.get(base_api+'courses/'+this.corso_id+'/63a5c5989075ad6f17d16b99/');//lista corsi
       this.corso = jokeee.data
     },
   },
