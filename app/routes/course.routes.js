@@ -14,6 +14,9 @@ module.exports = app => {
   
     // Retrieve a single course with id
     router.get("/:id", courses.findOne);
+
+    // for info favourite
+    router.get("/:id/:utente_id", courses.findOneWithFavorite);
   
     // Update a course with id
     router.put("/:id", courses.update);

@@ -1,5 +1,6 @@
 const db = require("../models");
 const Course = db.Course;
+const Favourite_course = db.Favourite_course;
 
 // Create and Save a new Course
 exports.create = (req, res) => {
@@ -66,6 +67,33 @@ exports.findOne = (req, res) => {
           .status(500)
           .send({ message: "Error retrieving Course with id=" + id });
       });
+};
+
+exports.findOneWithFavorite = (req, res) => {
+  const id = req.params.id;
+  const utente_id = req.params.utente_id;
+
+  Course.findById(id)
+    .populate("utente_id", "nome cognome")
+    .then(async data => {
+      if (!data) {
+        res.status(404).send({ message: "Not found Course with id " + id });
+      } else {
+        const favouriteCourse = await Favourite_course.findOne({ utente_id: utente_id, corso_id: id });
+        data = data.toObject()
+        if (favouriteCourse) {
+          data.is_favourite = true;
+        } else {
+          data.is_favourite = false;
+        }
+        res.send(data)
+      }
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "Error retrieving Course with id=" + id });
+    });
 };
 
 // Update a Course by the id in the request
