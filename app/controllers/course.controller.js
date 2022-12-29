@@ -39,6 +39,7 @@ exports.findAll = (req, res) => {
   
     Course.find(condition)
       .populate("utente_id", "nome cognome")
+      .sort({ valutazione: -1 })
       .then(data => {
         res.send(data);
       })
