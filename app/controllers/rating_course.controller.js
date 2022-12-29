@@ -1,5 +1,6 @@
 const db = require("../models");
 const Rating_course = db.Rating_course;
+const Course = db.Course;
 
 // Create and Save a new fav_course
 exports.create = (req, res) => {
@@ -23,6 +24,7 @@ exports.create = (req, res) => {
     } else {
       rating_course.save(rating_course)
       .then(data => {
+        updateCourseRating(req.body.corso_id)
           res.send(data);
       })
       .catch(err => {
@@ -49,6 +51,7 @@ exports.delete = (req, res) => {
 
   Rating_course.deleteOne({ utente_id: req.body.utente_id, corso_id: req.body.corso_id })
   .then(() => {
+    updateCourseRating(req.body.corso_id)
     res.send({ message: "Rating course was deleted successfully." });
   })
   .catch((err) => {
@@ -65,6 +68,7 @@ exports.findAndUpdate = (req, res) => {
   // con upsert se non lo trova lo crea nuovo!
   )
     .then((rating) => {
+      updateCourseRating(req.params.corso_id)
       res.send(rating);
     })
     .catch((err) => {
@@ -73,3 +77,30 @@ exports.findAndUpdate = (req, res) => {
       });
     });
 };
+
+const updateCourseRating = (corso_id) => {
+  // Trova tutti i documenti di Rating_course con il corso_id specificato
+  Rating_course.find({ corso_id: corso_id })
+    .then((ratings) => {
+      // Calcola la media delle valutazioni
+      const ratingSum = ratings.reduce((acc, rating) => acc + rating.valutazione, 0);
+      const ratingCount = ratings.length;
+      const ratingAvg = ratingSum / ratingCount;
+
+      // Aggiorna il campo "valutazione_corso" del corso con il nuovo rating calcolato
+      Course.findOneAndUpdate(
+        { _id: corso_id },
+        { $set: { valutazione_corso: ratingAvg } },
+        { new: true }
+      )
+        .then((course) => {
+          console.log(`Updated rating for course with id ${corso_id}: ${ratingAvg}`);
+        })
+        .catch((err) => {
+          console.log(`Error updating rating for course with id ${corso_id}: ${err}`);
+        });
+    })
+    .catch((err) => {
+      console.log(`Error finding ratings for course with id ${corso_id}: ${err}`);
+    });
+}
