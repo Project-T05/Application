@@ -1,20 +1,34 @@
 <template>
   <table>
-    <tr>
+    <tr >
       <td colspan="5" style="text-align: center; font-weight: bold;">Valuta il corso</td>
     </tr>
     <tr>
-      <!-- Sostituisci il metodo setRating con un bottone che faccia la stessa cosa -->
       <td v-for="n in 5" v-bind:key="n">
-        <button @click="ratings[courseId] = n" :style="{ 'border': n <= ratings[courseId] ? '5px solid #ffc107' : '5px solid #ddd' }">
+        <label @click="ratings = n" :style=" { 'border': n <= ratings ? '5px solid #ffc107' : '5px solid #ddd' }" >
           {{ n }}
-        </button>
+        </label>
+      </td>
+    </tr>
+    <!-- Aggiungi una riga per visualizzare il voto selezionato -->
+    <tr>
+      <td colspan="5">
+        Voto selezionato: {{ ratings }}
+      </td>
+    </tr>
+    <tr>
+      <!-- Aggiungi il bottone di conferma del voto -->
+      <td colspan="5">
+        <button @click="confirmRating(ratings)">Conferma voto</button>
       </td>
     </tr>
   </table>
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
   props: {
     courseId: {
@@ -25,6 +39,27 @@ export default {
   data() {
     return {
       ratings: {}
+    }
+  },
+  methods: {
+
+    //
+    //
+    // MARTIN INSERISCI IL POST GIURTO, DEL RESTO IL MECCANISMO E' CORRETTO, APPENA ATTERRO LO PUSHIO
+    // C'E' ANCHE DA CONTROLLARE CHE L'UTENTE NON ABBIA GIA' VALUTATO UN COSO, 
+    //
+  confirmRating(value) {
+
+      let base_api = 'http://localhost:8080/api/';
+
+      const data={
+        corso_id: this.item.id,
+        utente_id:'63a5c5989075ad6f17d16b99'
+      }
+        if (value !=null)
+          axios.post(base_api+'favourite_courses/'+value, data);//lista users
+        else
+          alert()
     }
   }
 }
@@ -49,4 +84,3 @@ export default {
   color: #ffc107;
   }
   </style>
-  

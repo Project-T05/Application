@@ -1,13 +1,13 @@
 <template>
-  <table class="conteiner" style="position: absolute; left:500px; top:80px; border: 2px solid gray; background-color: lightgray;">
+  <table class="conteiner" style="position: absolute; left:500px; top:80px; border: 2px solid gray; border-radius: 20px; background-color: lightgray;">
     <table class="comments">
       <div style="overflow-y: scroll; height: 400px; position: relative; left: 50px; ">
       <tr v-for="comment in sortedComments" :key="comment.id">
         <td class="comment-author">{{ comment.user }}:</td>
-        <td class="comment-text">{{ comment.text }}</td>
+        <td class="comment-text" >{{ comment.text }}</td>
         <td class="comment-likes-dislikes">
         
-          <img src="./LikeButton.png" style="width: 20px; height: 20px; margin-left: 50px;;" @click="likeComment(comment)" /> {{ comment.likes }}
+          <img src="./LikeButton.png" style="width: 20px; height: 20px; " @click="likeComment(comment)" /> {{ comment.likes }}
           <img src="./DislikeButton.png" style="width: 15px; height: 15px;" @click="dislikeComment(comment)" /> {{ comment.dislikes }}
         </td>
         <td class="comment-actions">
@@ -18,7 +18,7 @@
     </table>
     
     <div>
-  <input v-model="newCommentText" placeholder="Scrivi il tuo commento" style="width: 500px; height: 100px;" />
+  <input v-model="newCommentText" placeholder="Scrivi il tuo commento" style="width: 400px; height: 100px; border-radius: 20px;" />
   <button @click="addComment">Invia</button>
 </div>
 
@@ -120,7 +120,7 @@
   
   <style>
   .comments {
-    width: 500px;
+    width: 400px;
     height: 300px;
     overflow: auto; /* permette di visualizzare solo il contenuto della tabella e di scorrere il resto */
     margin: 0;
