@@ -1,7 +1,7 @@
 <template>
   <div id="app" style="overflow: hidden">
     <input type="text" v-model="searchTerm" placeholder="Cerca..." style="position: absolute; top: 100px; left: 350px; height: 30px; width: 500px; background-color: #D8D8D8; font-weight: bold; border-radius: 20px;">
-        <button  @click="search(searchTerm)" style="position: absolute; top: 105px; left: 870px;  height: 20px; width: 70px; border-radius: 20px;" type="submit" @click.prevent="search">Cerca</button>
+        <button  @click="search(searchTerm)" style="position: absolute; top: 105px; left: 870px;  height: 20px; width: 70px; border-radius: 20px;" type="submit">Cerca</button>
 
     <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1350px; top:20px; border-radius: 60px; ">
     <p style="position: absolute; left: 1230px; top:25px;" >NOME PROFILO</p>
