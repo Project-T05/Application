@@ -10,12 +10,7 @@
         </label>
       </td>
     </tr>
-    <!-- Aggiungi una riga per visualizzare il voto selezionato -->
-    <tr>
-      <td colspan="5">
-        Voto selezionato: {{ ratings }}
-      </td>
-    </tr>
+    
     <tr>
       <!-- Aggiungi il bottone di conferma del voto -->
       <td colspan="5">
@@ -36,12 +31,6 @@ export default {
     }
   },
   methods: {
-
-    //
-    //
-    // MARTIN INSERISCI IL POST GIURTO, DEL RESTO IL MECCANISMO E' CORRETTO, APPENA ATTERRO LO PUSHIO
-    // C'E' ANCHE DA CONTROLLARE CHE L'UTENTE NON ABBIA GIA' VALUTATO UN COSO, 
-    //
   confirmRating(value) {
 
       let base_api = 'http://localhost:8080/api/';
