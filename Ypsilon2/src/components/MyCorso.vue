@@ -2,9 +2,9 @@
     <div style="overflow: hidden">
       <img src="../assets/profilepic.png" style="width: 60px; height: 60px; position: absolute; left: 1350px; top:20px; border-radius: 60px; ">
     <p style="position: absolute; left: 1230px; top:25px;" >NOME PROFILO</p>
-    <p></p>
-    <div style="overflow-y: scroll; height: 600px; position: relative; left:300px;">
-    <td colspan="5" style="text-align: center; font-weight: bold; position:absolute; left: 300px; top:200px; font-size:150%">Statistiche del corso</td>
+    <p style="position: absolute; left:350px; top:100px;">NOME CORSO: {{this.corso.nome}}</p>
+    <div style="overflow-y: scroll; height: 620px; position: relative; left:200px;">
+    <td colspan="5" style="text-align: center; font-weight: bold; position:absolute; left: 100px; top:200px; font-size:150%">Statistiche del corso</td>
         <img src="../assets/statistiche1.png" style="width: 350px;height:230px; position:absolute; left: 100px; top:250px; border-radius:20px;" >
         <img src="../assets/Statistiche2.png" style="width: 350px;height:230px; position:absolute; left: 700px; top:250px; border-radius:20px;">
         <img src="../assets/Statistiche3.png" style="width: 350px;height:230px; position:absolute; left: 100px; top:500px; border-radius:20px;">
