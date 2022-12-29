@@ -10,6 +10,8 @@ module.exports = app => {
     router.get("/", users.findAll);
 
     router.get("/:utente_id/courses", users.findCoursesForUser);
+
+    router.get("/:utente_id/courses/:nome", users.findCoursesForUserFilteredByNome);
     
     router.get("/:utente_id/fav_courses", users.findFavCoursesForUser);
 

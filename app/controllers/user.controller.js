@@ -96,6 +96,54 @@ exports.findCoursesForUser = (req, res) => {
     });
 };
 
+// Retrieve all courses for a specific user
+exports.findCoursesForUserFilteredByNome = (req, res) => {
+  // Validate request
+  if (!req.params.utente_id) {
+    res.status(400).send({ message: "User ID can not be empty!" });
+    return;
+  }
+
+  // Find all course-user associations for the specified user
+  Favourite_course.find({ utente_id: req.params.utente_id })
+    .then((associations) => {
+      // Extract the course IDs from the associations
+      const courseIds = associations.map((association) => association.corso_id.toString());
+      
+      const prefix = req.params.nome;
+    
+      Course.find({ nome: { $regex: "^" + prefix, $options: "i" } })
+        .populate("utente_id", "nome cognome")
+        .sort({ valutazione_corso: -1 })
+        .then(data => {
+          const coursesWithIsFavourite = data.map((course) => {
+            return {
+              id: course.id,
+              nome: course.nome,
+              numero_cfu: course.numero_cfu,
+              valutazione_corso: course.valutazione_corso,
+              attivo: course.attivo,
+              utente_id: course.utente_id,
+              // Aggiungi qui altre proprietà se necessario
+              is_favourite: courseIds.includes(course.id)
+            }
+          });
+          res.send(coursesWithIsFavourite);
+        })
+        .catch(err => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while retrieving courses."
+          });
+        });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving course-user associations for user.",
+      });
+    });
+};
+
 // Retrieve all fav courses for a specific user
 exports.findFavCoursesForUser = (req, res) => {
   // Validate request
