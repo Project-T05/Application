@@ -4,7 +4,8 @@ module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
       utente_id: {type: Schema.Types.ObjectId, ref: 'user'},
-      corso_id: {type: Schema.Types.ObjectId, ref: 'course'}
+      corso_id: {type: Schema.Types.ObjectId, ref: 'course'},
+      valutazione: Number,
     },
     { timestamps: true }
   );

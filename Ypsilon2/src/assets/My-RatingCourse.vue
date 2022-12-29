@@ -53,11 +53,10 @@ export default {
       let base_api = 'http://localhost:8080/api/';
 
       const data={
-        corso_id: this.item.id,
-        utente_id:'63a5c5989075ad6f17d16b99'
+        valutazione: value
       }
         if (value !=null)
-          axios.post(base_api+'favourite_courses/'+value, data);//lista users
+          axios.post(base_api+'rating_courses/63a5c5989075ad6f17d16b99/'+this.item.id, data);//lista users
         else
           alert()
     }

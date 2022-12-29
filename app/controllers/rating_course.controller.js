@@ -56,29 +56,19 @@ exports.delete = (req, res) => {
   });
 };
 
-exports.update = (req, res) => {
-  if (!req.body) {
-    return res.status(400).send({
-      message: "Data to update can not be empty!"
-    });
-  }
-
-  const id = req.params.id;
-
-  Rating_course.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-    .then(data => {
-      if (!data) {
-        res.status(404).send({
-          message: `Cannot update Rating_course with id=${id}. Maybe Rating_course was not found!`
-        });
-      } else {
-        res.send({ message: "Rating_course was updated successfully." })
-        
-      };
+exports.findAndUpdate = (req, res) => {
+  // Trova il documento con l'utente e il corso specificati
+  Rating_course.findOneAndUpdate(
+    { utente_id: req.params.utente_id, corso_id: req.params.corso_id },
+    { $set: { valutazione: req.body.valutazione } },
+    { upsert: true, new: true }
+  )
+    .then((rating) => {
+      res.send(rating);
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
-        message: "Error updating Rating_course with id=" + id
+        message: "Error updating rating.",
       });
     });
 };

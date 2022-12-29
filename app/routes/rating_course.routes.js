@@ -8,6 +8,7 @@ module.exports = app => {
 
     // Delete a rating_course with utente_id and corso_id
     router.delete("", rating_courses.delete);
+    router.post('/:utente_id/:corso_id', rating_courses.findAndUpdate)
   
     app.use('/api/rating_courses', router);
   };
