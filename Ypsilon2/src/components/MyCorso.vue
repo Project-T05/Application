@@ -39,7 +39,7 @@ export default {
   data(){
     return {
       corso_id: this.$route.params.id,
-      item: {}
+      corso: {}
     }
   },
   methods: {
@@ -47,14 +47,14 @@ export default {
     let base_api = 'http://localhost:8080/api/';
 
     const data={
-      corso_id: this.item.id,
+      corso_id: this.corso.id,
       utente_id:'63a5c5989075ad6f17d16b99'
         }
           
-      if (!this.item.is_favourite) {
+      if (!this.corso.is_favourite) {
         axios.post(base_api+'favourite_courses/', data);//lista users
       } else {
-        axios.delete(base_api+'favourite_courses/63a5c5989075ad6f17d16b99/'+this.item.id);//lista corsi
+        axios.delete(base_api+'favourite_courses/63a5c5989075ad6f17d16b99/'+this.corso.id);//lista corsi
       }
       location.reload();
     },
