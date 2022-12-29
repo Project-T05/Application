@@ -55,6 +55,7 @@ exports.findOne = (req, res) => {
     const id = req.params.id;
   
     Course.findById(id)
+      .populate("utente_id", "nome cognome")
       .then(data => {
         if (!data)
           res.status(404).send({ message: "Not found Course with id " + id });
