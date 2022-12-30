@@ -2,18 +2,6 @@ module.exports = app => {
     const courses = require("../controllers/course.controller.js");
   
     var router = require("express").Router();
-  
-    // Create a new course
-    router.post("/", courses.create);
-  
-    // Retrieve all courses
-    router.get("/", courses.findAll);
-  
-    // Retrieve all published courses
-    router.get("/published", courses.findAllPublished);
-  
-    // Retrieve a single course with id
-    router.get("/:id", courses.findOne);
 
     // for info favourite
     router.get("/:id/:utente_id", courses.findOneWithFavorite);

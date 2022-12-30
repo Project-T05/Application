@@ -1,0 +1,544 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My API",
+    "description": "A description of my API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    },
+    {
+      "name": "Courses",
+      "description": "API for courses in the system"
+    },
+    {
+      "name": "Favourite Courses",
+      "description": "API for favorite courses in the system"
+    },
+    {
+      "name": "Rating Courses",
+      "description": "API for rating courses in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/api/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create a new user",
+        "description": "Adds a new user to the system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users",
+        "description": "Returns a list of all users in the system",
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "query",
+            "description": "Filter users by name (optional)",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{utente_id}/courses": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all courses for a specific user",
+        "description": "Returns a list of all courses for the specified user",
+        "parameters": [
+          {
+            "name": "utente_id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "nome",
+            "in": "query",
+            "description": "Filter courses by name (optional)",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Course"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/courses": {
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Create a new course",
+        "description": "Adds a new course to the system",
+        "parameters": [
+          {
+            "name": "course",
+            "in": "body",
+            "description": "Course to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get all course",
+        "description": "Returns a list of all course in the system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Delete all courses",
+        "description": "Deletes all courses in the system",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/courses/{id}": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get a single course",
+        "description": "Returns a course with the specified id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Course id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Delete a course with id",
+        "description": "Deletes a course with the specified id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Course id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Update a course with id",
+        "description": "Updates a course with the specified id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Course id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "course",
+            "in": "body",
+            "description": "Updated course",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        }
+      }
+    },
+    "/api/courses/{id}/{utente_id}": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "Get a single course with favorite information",
+        "description": "Returns a course with the specified id and favorite information for the specified user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Course id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "utente_id",
+            "in": "path",
+            "description": "User id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{utente_id}/courses/{nome}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get a specific course for a user by name",
+        "description": "Returns the specified course for the specified user, filtered by name",
+        "parameters": [
+          {
+            "name": "utente_id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "nome",
+            "in": "path",
+            "description": "Course name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{utente_id}/fav_courses": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all favourite courses for a specific user",
+        "description": "Returns a list of all favourite courses for the specified user",
+        "parameters": [
+          {
+            "name": "utente_id",
+            "in": "path",
+            "description": "User ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Course"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/favourite_courses": {
+      "post": {
+        "tags": [
+          "Favourite Courses"
+        ],
+        "summary": "Create a new favourite course",
+        "description": "Adds a new favourite course to the system",
+        "parameters": [
+          {
+            "name": "favourite_course",
+            "in": "body",
+            "description": "Favourite course to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Favourite_course"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Favourite_course"
+            }
+          }
+        }
+      }
+    },
+    "/api/favourite_courses/{utente_id}/{corso_id}": {
+      "delete": {
+        "tags": [
+          "Favourite Courses"
+        ],
+        "summary": "Delete a favourite course",
+        "description": "Deletes a favourite course with the specified user id and course id",
+        "parameters": [
+          {
+            "name": "utente_id",
+            "in": "path",
+            "description": "User id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "corso_id",
+            "in": "path",
+            "description": "Course id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/rating_course": {
+      "post": {
+        "tags": ["Rating Courses"],
+        "summary": "Create a new rating_course",
+        "description": "Creates a new rating_course and saves it to the database",
+        "parameters": [
+          {
+            "name": "utente_id",
+            "in": "query",
+            "description": "ID of the user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "corso_id",
+            "in": "query",
+            "description": "ID of the course",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created the rating_course",
+            "schema": {
+              "$ref": "#/definitions/Rating_course"
+            }
+          },
+          "400": {
+            "description": "Missing required fields"
+          },
+          "500": {
+            "description": "Error occurred while creating the rating_course"
+          }
+        }
+      }
+    },
+    "/api/rating_courses/{utente_id}/{corso_id}": {
+      "post": {
+        "tags": ["Rating Courses"],
+        "summary": "Update a rating_course",
+        "description": "Updates the rating of a rating_course with the specified user and course IDs",
+        "parameters": [
+          {
+            "name": "utente_id",
+            "in": "path",
+            "description": "ID of the user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "corso_id",
+            "in": "path",
+            "description": "ID of the course",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "valutazione",
+            "in": "body",
+            "description": "New rating for the rating_course",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Rating_course"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the rating_course",
+            "schema": {
+              "$ref": "#/definitions/Rating_course"
+            }
+          },
+          "500": {
+            "description": "Error updating rating_course"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": [
+        "nome",
+        "cognome"
+      ],
+      "properties": {
+        "nome":{"type": "string"},
+        "cognome":{"type": "string"}
+      }
+    },
+    "Course": {
+      "required": [
+        "nome",
+        "numero_cfu",
+        "valutazione_corso",
+        "attivo",
+        "utente_id"
+      ],
+      "properties": {
+        "nome":{"type": "string"},
+        "numero_cfu":{"type": "integer"},
+        "valutazione_corso":{"type": "integer"},
+        "attivo":{"type": "boolean"},
+        "utente_id":{"type": "object"}
+      }
+    },
+    "Favourite_course": {
+      "required": [
+        "utente_id",
+        "corso_id"
+      ],
+      "properties": {
+        "utente_id":{"type": "string"},
+        "corso_id":{"type": "string"}
+      }
+    },
+    "Rating_course": {
+      "required": [
+        "utente_id",
+        "corso_id",
+        "valutazione"
+      ],
+      "properties": {
+        "utente_id":{"type": "string"},
+        "corso_id":{"type": "string"},
+        "valutazione":{"type": "integer"}
+      }
+    }
+  }
+}

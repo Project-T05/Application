@@ -39,7 +39,10 @@ export default {
         valutazione: value
       }
         if (value !=null)
+        {
           axios.post(base_api+'rating_courses/63a5c5989075ad6f17d16b99/'+this.$route.params.id, data);//lista users
+          location.reload();
+        }
         else
           alert()
     }

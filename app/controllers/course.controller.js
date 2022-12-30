@@ -33,7 +33,6 @@ exports.create = (req, res) => {
         });
 };
 
-// Retrieve all courses from the database.
 exports.findAll = (req, res) => {
     const nome = req.query.nome;
     var condition = nome ? { nome: { $regex: new RegExp(nome), $options: "i" } } : {};
