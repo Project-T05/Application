@@ -22,7 +22,7 @@ afterEach(async () => {
   await db.mongoose.connection.close();
 });
 
-describe('Test ', () => {
+describe('get all user ', () => {
     it('It should response the GET method', async () => {
     
     const response = await request(app).get('/api/users/');
@@ -42,6 +42,7 @@ describe("user create ", () => {
 });
 describe("user get and course create with that user and delete of that course", () => {
   let martin;
+  let test1;
   it("should create a user", async () => {
     const res = await request(app).get("/api/users").query({nome: 'Martin'});
     martin= res.body[0];
@@ -56,8 +57,26 @@ describe("user get and course create with that user and delete of that course", 
       attivo: true,
       utente_id: martin.id
     });
-    expect(res.body.nome).toBe("test1");
-    const del = await request(app).delete("/api/courses/"+res.body.id);
+    test1=res.body;
+    expect(test1.nome).toBe("test1");
+  });
+
+  it("should create favourite", async () => {
+    const res = await request(app).post("/api/favourite_courses").send({
+      utente_id: martin.id,
+      corso_id: test1.id
+    });
+    expect(res.statusCode).toBe(200);
+  });
+
+  it("should delete the favourite", async () => {
+    const res = await request(app).delete("/api/favourite_courses/"+martin.id+"/"+test1.id);
+    expect(res.statusCode).toBe(200);
+  });
+
+
+  it("should delete the course", async () => {
+    const res = await request(app).delete("/api/courses/"+test1.id);
     expect(res.statusCode).toBe(200);
 
   });
