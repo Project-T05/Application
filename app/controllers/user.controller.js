@@ -11,7 +11,6 @@ exports.create = (req, res) => {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
-
   // Create a User
   const user = new User({
     nome: req.body.nome,

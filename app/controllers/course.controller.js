@@ -159,17 +159,3 @@ exports.deleteAll = (req, res) => {
         });
       });
 };
-
-// Find all published courses
-exports.findAllPublished = (req, res) => {
-    Course.find({ published: true })
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving courses."
-        });
-      });
-};
